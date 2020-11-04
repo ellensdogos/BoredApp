@@ -20,11 +20,6 @@ namespace BoredApp
             base.OnAppearing();
         }
 
-        void ImageButton_Clicked(System.Object sender, ItemTappedEventArgs e)
-        {
-            DisplayAlert("ButtonClicked", "Works!", "OK");
-        }
-
         void CollectionView_SelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
         {
             if (e.CurrentSelection != null)
