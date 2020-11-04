@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BoredApp.MoviePage" BackgroundColor="Black">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="MOVIE TIPS"
+                           TextColor="#00B7FC"
+                           FontSize="40"
+                           FontAttributes="Bold"
+                           HorizontalOptions="StartAndExpand"/>
+
+                    <Button Text="{Binding WatchlistButton}"
+                            Command="{Binding ShowWatchlistCommand}"
+                            HorizontalOptions="EndAndExpand"
+                            Margin="10"/>
+                </StackLayout>
+
+                <Label x:Name="DescriptionLabel"
+                       IsVisible="False"
+                       Text=""
+                       TextColor="White"
+                       FontAttributes="Italic"
+                       FontSize="15"/>
+
+                <Button Text="Add to watchlist"
+                        Command="{Binding AddMovieCommand}"
+                        CommandParameter="{Binding Movie.Title}"
+                        IsVisible="{Binding IsAddVisible}"/>
+                <Button Text="Remove from watchlist"
+                        Command="{Binding RemoveMovieCommand}"
+                        CommandParameter="{Binding Movie.Title}"
+                        IsVisible="{Binding IsRemoveVisible}"/>
+
+                <ListView ItemsSource="{Binding WatchList}"
+                          SelectionMode="None"
+                          IsVisible="{Binding IsWatchlistVisible}"
+                          Margin="0,30,0,20">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Label Text="{Binding .}"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       FontSize="Title"
+                                       TextColor="White"/>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView> 
+
+                <Grid Margin="10,10,10,30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="AUTO"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="1"
+                                 Spacing="10">
+                        <CollectionView ItemsSource="{Binding MovieList}"
+                                        SelectedItem="{Binding Movie}"
+                                        SelectionMode="Single"
+                                        SelectionChanged="CollectionView_SelectionChanged">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical"
+                                                 Span="3"
+                                                 VerticalItemSpacing="20"
+                                                 HorizontalItemSpacing="20"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Spacing="10"
+                                                 BackgroundColor="Black">
+                                        <Image Source="{Binding Image}"
+                                               Aspect="AspectFill"
+                                               HeightRequest="235"
+                                               HorizontalOptions="FillAndExpand"/>
+                                        <Label x:Name="TitleLabel"
+                                               Text="{Binding Title}"
+                                               TextColor="White"
+                                               FontSize="14"/>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BoredApp.PredictPage" BackgroundColor="Black">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center">
+
+            <Label Text="PREDICT ME"
+                   TextColor="#00B7FC"
+                   FontSize="40"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <Entry x:Name="NameEntry"
+                   Placeholder="Enter a name"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   PlaceholderColor="White" />
+
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Predict Age"
+                        Command="{Binding LoadAgeByNameCommand}"
+                        CommandParameter="{Binding Source={x:Reference NameEntry}, Path=Text}"
+                        Margin="0,30,0,30"/>
+                <Button Text="Predict Gender"
+                        Command="{Binding LoadGenderByNameCommand}"
+                        CommandParameter="{Binding Source={x:Reference NameEntry}, Path=Text}"
+                        Margin="0,30,0,30"/>
+            </StackLayout>
+
+
+            <StackLayout IsVisible="{Binding IsAgeVisible}">
+                <Label Text="Name"
+                       FontSize="Subtitle"
+                       Padding="10,10,10,0"
+                       TextColor="White"
+                       FontAttributes="Italic"/>
+                <Label Text="{Binding Person.name}"
+                       FontSize="Title"
+                       Padding="10,0,10,10"
+                       TextColor="White"/>
+                <Label Text="Age"
+                       FontSize="Subtitle"
+                       Padding="10,10,10,0"
+                       TextColor="White"
+                       FontAttributes="Italic"/>
+                <Label Text="{Binding Person.age}"
+                       FontSize="Title"
+                       Padding="10,0,10,10"
+                       TextColor="White"/>
+            </StackLayout>
+
+            <StackLayout IsVisible="{Binding IsGenderVisible}">
+                <Label Text="Name"
+                       FontSize="Subtitle"
+                       Padding="10,10,10,0"
+                       TextColor="White"
+                       FontAttributes="Italic"/>
+                <Label Text="{Binding Person.name}"
+                       FontSize="Title"
+                       Padding="10,0,10,10"
+                       TextColor="White"/>
+                <Label Text="Gender"
+                       FontSize="Subtitle"
+                       Padding="10,10,10,0"
+                       TextColor="White"
+                       FontAttributes="Italic"/>
+                <Label Text="{Binding Person.gender}"
+                       FontSize="Title"
+                       Padding="10,0,10,10"
+                       TextColor="White"/>
+                <Label Text="Probability"
+                       FontSize="Subtitle"
+                       Padding="10,10,10,0"
+                       TextColor="White"
+                       FontAttributes="Italic"/>
+                <Label Text="{Binding Person.probability}"
+                       FontSize="Title"
+                       Padding="10,0,10,10"
+                       TextColor="White"/>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

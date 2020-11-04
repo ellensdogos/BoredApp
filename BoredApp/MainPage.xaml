@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BoredApp.MainPage">
+    <ScrollView BackgroundColor="Black">
+        <StackLayout HorizontalOptions="Center">
+
+            <Frame BackgroundColor="Black"
+                   Padding="24"
+                   CornerRadius="0">
+                <StackLayout>
+                    <Label Text="I AM BORED"
+                           HorizontalTextAlignment="Center"
+                           TextColor="#00B7FC"
+                           FontSize="36" />
+                </StackLayout>
+            </Frame>
+
+            <Label Text="{Binding Activity.activity}"
+                   FontSize="Title"
+                   Padding="10"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"/>
+            <Label Text="Participants"
+                   FontSize="Subtitle"
+                   Padding="10"
+                   TextColor="White"
+                   HorizontalOptions="Center"/>
+
+            <Label Text="{Binding Activity.participants}"
+                   FontSize="Title"
+                   TextColor="White"
+                   HorizontalOptions="Center"/>
+            <Label Text="Price"
+                   FontSize="Subtitle"
+                   Padding="10"
+                   TextColor="White"
+                   HorizontalOptions="Center"/>
+
+            <Label Text="{Binding Activity.price}"
+                   FontSize="Title"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,20"/>
+
+            <Button Text="Give me something to do"
+                    Command="{Binding LoadActivityCommand}"
+                    Margin="0,40,0,10"
+                    WidthRequest="300"/>
+            <Button Text="Predict me"
+                    Command="{Binding LoadPredictPageCommand}"
+                    Margin="0,10,0,10"
+                    WidthRequest="300"/>
+            <Button Text="Movie Tips"
+                    Command="{Binding LoadMoviePageCommand}"
+                    Margin="0,10,0,10"
+                    WidthRequest="300"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
